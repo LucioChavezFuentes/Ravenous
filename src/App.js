@@ -1,25 +1,71 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import BusinessList from './components/BusinessList/BusinessList';
+import SearchBar from './components/SearchBar/SearchBar';
+import Yelp from './util/Yelp'
+import {valueConditions} from './util/treeConditionals'
 
+
+
+/*const business = {
+  imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
+  name: 'MarginOtto Pizzeria',
+  address: '1010 Paddington Way',
+  city: 'Flavortown',
+  state: 'NY',
+  zipCode: '10101',
+  category: 'Italian',
+  rating: 4.5,
+  reviewCount: 90
+};*/
+
+//let businesses = [business, business, business, business, business, business ];
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {businesses: []}
+    this.searchYelp = this.searchYelp.bind(this);
+  }
+
+  searchYelp(term,location,sortBy){
+    //console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`)
+    switch(valueConditions(term,location)) {
+      
+      case 'termTrue_locationTrue':
+      Yelp.search(term,location,sortBy).then(businesses => {
+        //console.log(businesses)
+        this.setState({
+          businesses : businesses
+        });
+      })
+      break;
+
+      case 'termFalse_locationTrue':
+      alert('Please provide a Type of Food')
+      break;
+
+      case 'termTrue_locationFalse':
+      alert('Please provide a Location')
+      break;
+
+      case 'termFalse_locationFalse':
+      alert('Please provide a Type of Food and a Location')
+      break;
+
+      default:
+
+    }
+    
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>ravenous</h1>
+  
+        <SearchBar searchYelp={this.searchYelp} />
+        <BusinessList businesses={this.state.businesses} /> 
       </div>
     );
   }
