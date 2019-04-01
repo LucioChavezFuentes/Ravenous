@@ -213,7 +213,7 @@ export default class AutoCompleteLocation extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Where?',
+      placeholder: 'Where? Please type a city',
       value,
       onChange: this.onChange,
       onKeyPress: this.handleKeyPress,
