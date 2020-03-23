@@ -93,59 +93,10 @@ class SearchBar extends React.Component {
   </div>
   <div className="SearchBar-fields">
   
-  
-  
     <input type='text' placeholder="Search Businesses" onChange={this.handleTermChange} onKeyPress={this.handleSearch} autoComplete="on"  />
-       {/*<input  type='text' placeholder="Where?" onChange={this.handleLocationChange} onKeyPress={this.handleSearch} autoComplete="on"   />*/}
-    
-  <AutoCompleteLocation locationChange={this.handleLocationChange} handleSearch={this.handleSearch} />
-
-  {/*<AutoCompleteLocation 
-  
-  items={[
-    { id: 'mexico', label: 'Mexico' },
-    { id: 'francia', label: 'Francia' },
-    { id: 'canada', label: 'Canada' },
-  ]}
-  shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-  getItemValue={item => item.label}
-  renderItem={(item, highlighted) =>
-    <div
-      key={item.id}
-      style={{ backgroundColor: highlighted ? '#bebebe' : '#eee'}}
-    >
-      {item.label}
-    </div>
-  }
-  value={this.state.location}
-  onChange={e => this.setState({ location: e.target.value })
-  }
-  onSelect={value => this.setState({ location: value })
-  } 
-  inputProps= {{
-    placeholder: 'Location?',
-    onKeyPress: this.handleSearch,
-}
-    
-  }
-  menuStyle= {{
-    minWidth: '300px',
-left: '50%',
-marginRight: '2.22rem',
-border: '1px solid #fff',
-borderRadius: '4px',
-fontSize: '.77rem',
-fontWeight: '500',
-position: 'absolute',
-display: 'block'
-    
-    
-    
-    
-  }}
-/>*/}      
-  
       
+    <AutoCompleteLocation locationChange={this.handleLocationChange} handleSearch={this.handleSearch} />
+     
   </div>
 
   

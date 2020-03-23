@@ -91,6 +91,14 @@
       margin-left: 2rem;
       margin-right: 2rem;
     }
+
+    .SearchBar-sort-options li {
+      
+      padding: 0 0.68rem .33rem 0.68rem;
+      background-color: rgba(0, 0, 0, 0.315);
+      border-radius: 10px;
+      margin: 0 0.3rem;
+    }
   
     .SearchBar-fields {
       flex-direction: column;
