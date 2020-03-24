@@ -8,7 +8,7 @@ body {
 
 .input {
   width: 240px;
-  height: 30px;
+  /*height: 30px;*/
   padding: 10px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
@@ -33,7 +33,7 @@ body {
 .suggestionsContainerOpen {
   display: block;
   position: absolute;
-  top: 51px;
+  top: 38px;
   width: 280px;
   border: 1px solid #aaa;
   background-color: #fff;
@@ -58,6 +58,14 @@ body {
 
 .suggestionHighlighted {
   background-color: #ddd;
+}
+
+@media only screen and (max-width: 560px) {
+  .container {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 

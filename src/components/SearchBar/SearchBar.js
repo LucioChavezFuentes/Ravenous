@@ -93,7 +93,7 @@ class SearchBar extends React.Component {
   </div>
   <div className="SearchBar-fields">
   
-    <input type='text' placeholder="Search Businesses" onChange={this.handleTermChange} onKeyPress={this.handleSearch} autoComplete="on"  />
+    <input type='text' placeholder="What do you apetize?" onChange={this.handleTermChange} onKeyPress={this.handleSearch} autoComplete="on"  />
       
     <AutoCompleteLocation locationChange={this.handleLocationChange} handleSearch={this.handleSearch} />
      
@@ -101,7 +101,9 @@ class SearchBar extends React.Component {
 
   
   <div className="SearchBar-submit" onClick={this.handleSearch}>
-    <a>Let's Go</a>
+    <button disabled={this.props.loading}>
+      <p>Let's Go</p>
+    </button>
   </div>
 </div>
 

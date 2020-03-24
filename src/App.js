@@ -25,7 +25,7 @@ import {BrowserRouter , Route} from 'react-router-dom';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: []}
+    this.state = {businesses: [], loading: false}
     this.searchYelp = this.searchYelp.bind(this);
   }
 
@@ -34,11 +34,16 @@ class App extends Component {
     switch(valueConditions(term,location)) {
       
       case 'termTrue_locationTrue':
+      this.setState({loading: true})
       Yelp.search(term,location,sortBy).then(businesses => {
-        //console.log(businesses)
         this.setState({
-          businesses : businesses
+          businesses : businesses,
+          loading : false
         });
+      })
+      .catch(err => {
+        this.setState({loading: false})
+        console.error(err)
       })
       break;
 
@@ -57,7 +62,6 @@ class App extends Component {
       default:
 
     }
-    
   }
 
   render() {
@@ -65,7 +69,7 @@ class App extends Component {
       <div className="App">
         <h1>ravenous</h1>
   
-        <SearchBar searchYelp={this.searchYelp} />
+        <SearchBar searchYelp={this.searchYelp} loading={this.state.loading} />
         <BusinessList businesses={this.state.businesses} /> 
       </div>
     );

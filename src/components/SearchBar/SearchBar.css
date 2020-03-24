@@ -63,13 +63,30 @@
     text-align: center;
   }
   
-  .SearchBar-submit a {
+  .SearchBar-submit button {
     border-radius: 4px;
+    border: solid 1px #8f733b ;
     padding: .72rem 1.7rem;
     background-color: #cca353;
     color: #ffffff;
     font-weight: 600;
     transition: background-color .5s;
+  }
+
+  .SearchBar-submit button p {
+    font-weight: 600;
+    font-size: large;
+  }
+
+  .SearchBar-submit button:disabled {
+    /*opacity: 0.6;*/
+    cursor: not-allowed;
+    background-color: #c7bca9;
+  }
+
+  .SearchBar-submit button:disabled p {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
   
   .SearchBar-submit a:hover {
@@ -82,23 +99,22 @@
     border:1px solid #a7874b;
   }
   
-  @media only screen and (max-width: 560px) {
+  @media screen and (max-width: 560px) {
     .SearchBar {
       background-image: url('https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/background_search_mobile.jpg');
     }
-  
-    .SearchBar-sort-options ul {
-      margin-left: 2rem;
-      margin-right: 2rem;
-    }
 
     .SearchBar-sort-options li {
-      
-      padding: 0 0.68rem .33rem 0.68rem;
-      background-color: rgba(0, 0, 0, 0.315);
-      border-radius: 10px;
-      margin: 0 0.3rem;
+      background-color: rgba(0, 0, 0, 0.515);
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding: .13rem 0.68rem .33rem 0.68rem;
     }
+
+    .SearchBar-sort-options li.active, .SearchBar-sort-options li.active:hover {
+      border-bottom: 1px solid #ffa800;
+      color: #ffa800;
+  }
   
     .SearchBar-fields {
       flex-direction: column;
@@ -108,5 +124,6 @@
     .SearchBar-fields input {
       margin-right: 0;
       margin-bottom: .86rem;
+      width: 80%;
     }
   }
