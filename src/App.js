@@ -70,7 +70,7 @@ class App extends Component {
         <h1>ravenous</h1>
   
         <SearchBar searchYelp={this.searchYelp} loading={this.state.loading} />
-        <BusinessList businesses={this.state.businesses} /> 
+        <BusinessList businesses={this.state.businesses} loading={this.state.loading} /> 
       </div>
     );
   }
