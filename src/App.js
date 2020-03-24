@@ -5,9 +5,6 @@ import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
 import Yelp from './util/Yelp'
 import {valueConditions} from './util/treeConditionals'
-import {BrowserRouter , Route} from 'react-router-dom';
-
-
 
 /*const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
