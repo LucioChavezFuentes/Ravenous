@@ -127,3 +127,14 @@
       width: 80%;
     }
   }
+
+  @media screen and (max-width: 318px) {
+
+    .SearchBar-sort-options li {
+      background-color: rgba(0, 0, 0, 0.515);
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      padding: .13rem 0.48rem .33rem 0.48rem;
+    }
+
+  }
