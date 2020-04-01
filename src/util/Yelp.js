@@ -34,8 +34,13 @@ export const Yelp = {
 
                     }
                 })
+            } else {
+                return []
             }
-        })
+        }).catch( err => {
+            console.error(err)
+            throw err
+            })
     }
 };
 

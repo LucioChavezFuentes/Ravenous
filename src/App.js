@@ -22,7 +22,7 @@ import {valueConditions} from './util/treeConditionals'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: [], loading: false}
+    this.state = {businesses: [], loading: false, fetched: false, error: false}
     this.searchYelp = this.searchYelp.bind(this);
   }
 
@@ -31,15 +31,15 @@ class App extends Component {
     switch(valueConditions(term,location)) {
       
       case 'termTrue_locationTrue':
-      this.setState({loading: true})
+      this.setState({loading: true, fetched: true})
       Yelp.search(term,location,sortBy).then(businesses => {
         this.setState({
           businesses : businesses,
-          loading : false
+          loading : false,
+          error: false
         });
-      })
-      .catch(err => {
-        this.setState({loading: false})
+      }).catch(err => {
+        this.setState({loading: false, error: err})
         console.error(err)
       })
       break;
@@ -67,7 +67,7 @@ class App extends Component {
         <h1>ravenous</h1>
   
         <SearchBar searchYelp={this.searchYelp} loading={this.state.loading} />
-        <BusinessList businesses={this.state.businesses} loading={this.state.loading} /> 
+        <BusinessList businesses={this.state.businesses} loading={this.state.loading} fetched={this.state.fetched} error={this.state.error} /> 
       </div>
     );
   }
