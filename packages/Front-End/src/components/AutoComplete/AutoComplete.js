@@ -1,66 +1,65 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
-import theme from './AutoComplete.module.css'
+import theme from './AutoComplete.module.css';
 // Imagine you have a list of languages that you'd like to autosuggest.
 
 const languages = [
   {
     name: 'Mexico',
-    year: 1972
+    year: 1972,
   },
   {
     name: 'Francia',
-    year: 2012
+    year: 2012,
   },
 
   {
-    name:'Moroco',
-    year: 1967
+    name: 'Moroco',
+    year: 1967,
   },
 
   {
     name: 'Malasia',
-    year: 1234
+    year: 1234,
   },
 
   {
     name: 'Canada',
-    year: 1256
+    year: 1256,
   },
 
   {
     name: 'US',
-    year: 675
+    year: 675,
   },
 
   {
     name: 'New York',
-    year:580
+    year: 580,
   },
 
   {
     name: 'Texas',
-    year: 1092
+    year: 1092,
   },
 
   {
     name: 'Guadalajara',
-    year:479
+    year: 479,
   },
-   {
-     name: 'Monterrey',
-     year: 7239
-   },
+  {
+    name: 'Monterrey',
+    year: 7239,
+  },
 
-   {
-     name: 'California',
-     year: 4567
-   },
-   {
-     name: 'Florida',
-     year: 9549
-   }
-  
+  {
+    name: 'California',
+    year: 4567,
+  },
+  {
+    name: 'Florida',
+    year: 9549,
+  },
 ];
 
 // Teach Autosuggest how to calculate suggestions for any given input value.
@@ -68,9 +67,11 @@ const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
 
-  return inputLength === 0 ? [] : languages.filter(lang =>
-    lang.name.toLowerCase().slice(0, inputLength) === inputValue
-  );
+  return inputLength === 0
+    ? []
+    : languages.filter(
+        lang => lang.name.toLowerCase().slice(0, inputLength) === inputValue
+      );
 };
 
 // When suggestion is clicked, Autosuggest needs to populate the input
@@ -79,9 +80,11 @@ const getSuggestions = value => {
 const getSuggestionValue = suggestion => suggestion.name;
 
 // Use your imagination to render suggestions.
-const renderSuggestion = (suggestion, {isHighlighted}) => (
-  <div key={suggestion.year}
-  style={{ backgroundColor: isHighlighted ? '#bebebe' : '#eee'}}>
+const renderSuggestion = (suggestion, { isHighlighted }) => (
+  <div
+    key={suggestion.year}
+    style={{ backgroundColor: isHighlighted ? '#bebebe' : '#eee' }}
+  >
     {suggestion.name}
   </div>
 );
@@ -100,113 +103,110 @@ export default class AutoCompleteLocation extends React.Component {
       suggestions: [
         {
           name: 'Mexico',
-          year: 1972
+          year: 1972,
         },
         {
           name: 'Francia',
-          year: 2012
+          year: 2012,
         },
 
         {
-          name:'Moroco',
-          year: 1967
+          name: 'Moroco',
+          year: 1967,
         },
-      
+
         {
           name: 'Malasia',
-          year: 1234
+          year: 1234,
         },
 
         {
           name: 'Canada',
-          year: 1256
+          year: 1256,
         },
-      
+
         {
           name: 'US',
-          year: 675
+          year: 675,
         },
-      
+
         {
           name: 'New York',
-          year:580
+          year: 580,
         },
-      
+
         {
           name: 'Texas',
-          year: 1092
+          year: 1092,
         },
-      
+
         {
           name: 'Guadalajara',
-          year:479
+          year: 479,
         },
-         {
-           name: 'Monterrey',
-           year: 7239
-         },
-      
-         {
-           name: 'California',
-           year: 4567
-         },
-         {
-           name: 'Florida',
-           year: 9549
-         }
-        
-        
+        {
+          name: 'Monterrey',
+          year: 7239,
+        },
+
+        {
+          name: 'California',
+          year: 4567,
+        },
+        {
+          name: 'Florida',
+          year: 9549,
+        },
       ],
-      
-      
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
+    this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(
+      this
+    );
+    this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(
+      this
+    );
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    
   }
 
-   
+  handleKeyPress(event) {
+    this.props.handleSearch(event);
+  }
 
-    handleKeyPress(event) {
-      this.props.handleSearch(event)
-    }
-      
-    
-
-   
-    //Mi comentario
-    //AutoComplete Settings
+  //Mi comentario
+  //AutoComplete Settings
 
   onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    }, ()=> {
-      this.props.locationChange(this.state.value)
-    });
-    
+    this.setState(
+      {
+        value: newValue,
+      },
+      () => {
+        this.props.locationChange(this.state.value);
+      }
+    );
   };
 
   // Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: getSuggestions(value),
     });
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
   onSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   };
 
-  onSuggestionSelected(event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method })  {
-
-  }
+  onSuggestionSelected(
+    event,
+    { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
+  ) {}
 
   render() {
     const { value, suggestions } = this.state;
@@ -221,21 +221,16 @@ export default class AutoCompleteLocation extends React.Component {
 
     // Finally, render it!
     return (
-
-       
-  <Autosuggest
+      <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
-        onSuggestionSelected= {this.onSuggestionSelected}
+        onSuggestionSelected={this.onSuggestionSelected}
         theme={theme}
       />
-  
-  
-      
     );
   }
 }

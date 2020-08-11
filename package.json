@@ -1,43 +1,50 @@
 {
   "name": "ravenous",
-  "version": "0.1.0",
+  "description": "",
+  "version": "1.1.0",
   "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@types/jest": "^24.0.11",
-    "@types/node": "^11.11.3",
-    "@types/react": "^16.8.8",
-    "@types/react-dom": "^16.8.2",
-    "react": "^16.8.4",
-    "react-autocomplete": "^1.8.1",
-    "react-autocomplete-input": "^1.0.10",
-    "react-autosuggest": "^9.4.3",
-    "react-css-modules": "^4.7.9",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
-    "react-spinners": "^0.8.1",
-    "typescript": "^3.3.3333",
-    "underscore": "^1.9.1",
-    "whatwg-fetch": "^3.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "npm run build && firebase deploy --only hosting"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+  "workspaces": [
+    "shared/**/*",
+    "packages/*",
+    "packages/Back-End/functions"
   ],
+  "scripts": {
+    "clean": "lerna clean --yes && rimraf node_modules",
+    "clean:build": "lerna exec -- rimraf \"{.next,dist,out,build,.docz}\"",
+    "start:all": "lerna run --parallel start",
+    "start:social-cnjt": "yarn workspace thesocialconejito-client run start",
+    "build:social-cnjt": "yarn workspace thesocialconejito-client run build",
+    "test:social-cnjt": "yarn workspace thesocialconejito-client run test",
+    "deploy:social-cnjt": "yarn workspace thesocialconejito-client run build && yarn workspace thesocialconejito-client run deploy",
+    "deploy:functions": "yarn workspace functions run deploy",
+    "logs:social-cnjt-server": "yarn workspace functions run logs",
+    "serve:functions": "yarn workspace functions run serve",
+    "upgrade:social-cnjt": "yarn workspace thesocialconejito-client upgrade-interactive --latest",
+    "upgrade:functions": "yarn workspace functions upgrade-interactive --latest",
+    "start:and:serve": "yarn run start:social-cnjt && yarn run serve:functions",
+    "update:all": "lerna exec -- yarn upgrade --latest",
+    "deploy:all": "yarn run deploy:functions && yarn run deploy:social-cnjt",
+    "install:functions" : "yarn workspace functions install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,css}": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
-    "babel-plugin-emotion": "^10.0.29"
+    "cross-env": "^6.0.0",
+    "husky": "^3.0.7",
+    "lerna": "^3.18.3",
+    "lint-staged": "^9.4.0",
+    "prettier": "^1.18.2",
+    "redux-devtools-extension": "^2.13.8",
+    "rimraf": "^3.0.0",
+    "serve": "^11.2.0"
   }
 }

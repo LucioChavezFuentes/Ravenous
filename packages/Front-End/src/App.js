@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
-import Yelp from './util/Yelp'
-import {valueConditions} from './util/treeConditionals'
+import Yelp from './util/Yelp';
+import { valueConditions } from './util/treeConditionals';
 
 /*const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -22,42 +22,47 @@ import {valueConditions} from './util/treeConditionals'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {businesses: [], loading: false, fetched: false, error: false}
+    this.state = {
+      businesses: [],
+      loading: false,
+      fetched: false,
+      error: false,
+    };
     this.searchYelp = this.searchYelp.bind(this);
   }
 
-  searchYelp(term,location,sortBy){
+  searchYelp(term, location, sortBy) {
     //console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`)
-    switch(valueConditions(term,location)) {
-      
+    switch (valueConditions(term, location)) {
       case 'termTrue_locationTrue':
-      this.setState({loading: true, fetched: true})
-      Yelp.search(term,location,sortBy).then(businesses => {
-        this.setState({
-          businesses : businesses,
-          loading : false,
-          error: false
-        });
-      }).catch(err => {
-        this.setState({loading: false, error: err})
-        console.error(err)
-      })
-      break;
+        this.setState({ loading: true, fetched: true });
+        Yelp.search(term, location, sortBy)
+          .then(businesses => {
+            this.setState({
+              businesses: businesses,
+              loading: false,
+              error: false,
+            });
+          })
+          .catch(err => {
+            this.setState({ loading: false, error: err });
+            console.error(err);
+          });
+        break;
 
       case 'termFalse_locationTrue':
-      alert('Please provide a Type of Food')
-      break;
+        alert('Please provide a Type of Food');
+        break;
 
       case 'termTrue_locationFalse':
-      alert('Please provide a Location')
-      break;
+        alert('Please provide a Location');
+        break;
 
       case 'termFalse_locationFalse':
-      alert('Please provide a Type of Food and a Location')
-      break;
+        alert('Please provide a Type of Food and a Location');
+        break;
 
       default:
-
     }
   }
 
@@ -65,9 +70,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>ravenous</h1>
-  
+
         <SearchBar searchYelp={this.searchYelp} loading={this.state.loading} />
-        <BusinessList businesses={this.state.businesses} loading={this.state.loading} fetched={this.state.fetched} error={this.state.error} /> 
+        <BusinessList
+          businesses={this.state.businesses}
+          loading={this.state.loading}
+          fetched={this.state.fetched}
+          error={this.state.error}
+        />
       </div>
     );
   }
