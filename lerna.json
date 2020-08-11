@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "shared/**/*",
+    "packages/*",
+    "packages/Back-End/functions"
+  ],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true
+}

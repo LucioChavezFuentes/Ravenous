@@ -24,7 +24,7 @@
     "start:and:serve": "yarn run start:social-cnjt && yarn run serve:functions",
     "update:all": "lerna exec -- yarn upgrade --latest",
     "deploy:all": "yarn run deploy:functions && yarn run deploy:social-cnjt",
-    "install:functions" : "yarn workspace functions install"
+    "install:functions": "yarn workspace functions install"
   },
   "husky": {
     "hooks": {
@@ -38,13 +38,17 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "cross-env": "^6.0.0",
+    "eslint": "^7.6.0",
     "husky": "^3.0.7",
     "lerna": "^3.18.3",
     "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8",
     "rimraf": "^3.0.0",
-    "serve": "^11.2.0"
+    "serve": "^11.2.0",
+    "typescript": "^3.9.7"
   }
 }
