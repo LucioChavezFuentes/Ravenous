@@ -28,7 +28,7 @@
     "deploy": "npm run build && firebase deploy --only hosting"
   },
   "eslintConfig": {
-    "extends": "airbnb-typescript"
+    "extends": "babel-eslint"
   },
   "browserslist": [
     ">0.2%",
@@ -37,11 +37,13 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "babel-plugin-emotion": "^10.0.29",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8"
   }
 }

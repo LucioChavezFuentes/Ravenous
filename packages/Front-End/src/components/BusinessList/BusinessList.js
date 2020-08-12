@@ -30,8 +30,8 @@ class BusinessList extends React.Component {
             })
           ) : this.props.fetched && !this.props.loading ? (
             <p>
-              !No restaurants found¡ Did you search for food? Try searching
-              something like "sea food", "tacos", "meat", "beef", etc.
+              {`!No restaurants found¡ Did you search for food? Try searching
+              something like "sea food", "tacos", "meat", "beef", etc.`}
             </p>
           ) : (
             <p></p>

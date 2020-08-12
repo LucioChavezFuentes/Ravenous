@@ -116,7 +116,7 @@ class SearchBar extends React.Component {
 
         <div className="SearchBar-submit" onClick={this.handleSearch}>
           <button disabled={this.props.loading}>
-            <p>Let's Go</p>
+            <p>{`Let's Go`}</p>
           </button>
         </div>
       </div>
