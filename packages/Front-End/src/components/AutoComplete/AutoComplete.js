@@ -203,10 +203,10 @@ export default class AutoCompleteLocation extends React.Component {
     });
   };
 
-  onSuggestionSelected(
+  /*onSuggestionSelected(
     event,
     { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }
-  ) {}
+  ) {}*/
 
   render() {
     const { value, suggestions } = this.state;
