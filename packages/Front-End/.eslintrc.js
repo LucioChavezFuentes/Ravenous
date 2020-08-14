@@ -2,13 +2,14 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    'jest/globals': true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
-    module: false,
-    process: false,
+    process: true,
+    module: true,
   },
   parserOptions: {
     ecmaFeatures: {
@@ -20,7 +21,7 @@ module.exports = {
 
   parser: 'babel-eslint',
 
-  plugins: ['react'],
+  plugins: ['react', 'jest'],
   rules: {
     'react/prop-types': 0,
   },
