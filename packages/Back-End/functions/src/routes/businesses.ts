@@ -35,7 +35,7 @@ const getBusinesses = async (req : GetBusinessesRequest, res : express.Response)
 		}
 
 	} else {
-		return res.status(400).json({error: 'term not provided'})
+		return res.status(400).json({error: 'term, location and sortBy not provided or queries not written correctly'})
 	}
 }
 
