@@ -1,15 +1,7 @@
-const apiKey =
-  'AmX43N_jFBUWKFgYcSXFpRPSPQhxXwUjRx1odw35LY01H5xeIDAlHvPKRQ2vLs6lWFj0NeHq2X7cFRnaBjiQP4DZnacuMvQLzPjTCjytjX93i9mNOzT2NQzZ1eSPXHYx';
-
 export const Yelp = {
   search(term, location, sortBy) {
     return fetch(
-      `https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`,
-      {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-        },
-      }
+      `https://us-central1-ravenous-8b12b.cloudfunctions.net/businesses?term=${term}&location=${location}&sortBy=${sortBy}`
     )
       .then(response => {
         return response.json();
@@ -38,12 +30,8 @@ export const Yelp = {
             };
           });
         } else {
-          return [];
+          throw jsonResponse;
         }
-      })
-      .catch(err => {
-        console.error(err);
-        throw err;
       });
   },
 };
