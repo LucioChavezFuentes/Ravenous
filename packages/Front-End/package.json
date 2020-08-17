@@ -39,7 +39,6 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-plugin-emotion": "^10.0.29",
-    "eslint": "^7.6.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^23.20.0",
