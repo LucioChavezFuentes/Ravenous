@@ -15,7 +15,7 @@
     "start:ravenous": "yarn workspace ravenous run start",
     "build:ravenous": "yarn workspace ravenous run build",
     "test:ravenous": "yarn workspace ravenous run test",
-    "deploy:ravenous": "yarn workspace ravenous run build && yarn workspace ravenous run deploy",
+    "deploy:ravenous": "yarn workspace ravenous run deploy",
     "deploy:backend": "yarn workspace ravenous-backend run deploy",
     "logs:social-cnjt-server": "yarn workspace ravenous-backend run logs",
     "serve:backend": "yarn workspace ravenous-backend run serve",
